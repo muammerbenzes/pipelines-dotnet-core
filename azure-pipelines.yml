@@ -21,12 +21,12 @@ steps:
 
 # do this before your build tasks
 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: restore
-    projects: '**/*.csproj'
-    feedsToUse: config
-    nugetConfigPath: NuGet.config    # Relative to root of the repository
+#- task: DotNetCoreCLI@2
+#  inputs:
+#    command: restore
+#    projects: '**/*.csproj'
+#    feedsToUse: config
+#    nugetConfigPath: NuGet.config    # Relative to root of the repository
 #    externalFeedCredentials: <Name of the NuGet service connection>
 # ...
 
@@ -69,3 +69,8 @@ steps:
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    feedsToUse: 'select'
