@@ -23,3 +23,12 @@ steps:
     command: 'publish'
     publishWebProjects: true
 
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Visual Studio Enterprise(9277c589-32bc-4419-ae67-f80a2bff049f)'
+    appType: 'webAppLinux'
+    WebAppName: 'mbcoreapp01'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'DOTNETCORE|2.2'
+
